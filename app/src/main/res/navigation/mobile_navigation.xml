@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_guitars">
+    app:startDestination="@+id/nav_guitars_list">
 
     <fragment
         android:id="@+id/nav_profile"
@@ -18,10 +18,22 @@
         tools:layout="@layout/fragment_notes_list" />
 
     <fragment
-        android:id="@+id/nav_guitars"
+        android:id="@+id/nav_guitars_list"
         android:name="edu.rosehulman.notable.ui.guitars.GuitarsListFragment"
         android:label="@string/menu_guitars"
         tools:layout="@layout/fragment_guitars_list" />
+
+    <fragment
+        android:id="@+id/nav_guitars_edit"
+        android:name="edu.rosehulman.notable.ui.guitars.GuitarsEditFragment"
+        android:label="@string/menu_guitars"
+        tools:layout="@layout/fragment_guitars_edit" />
+
+    <fragment
+        android:id="@+id/nav_guitars_detail"
+        android:name="edu.rosehulman.notable.ui.guitars.GuitarsDetailFragment"
+        android:label="@string/menu_guitars"
+        tools:layout="@layout/fragment_guitars_detail" />
 
     <fragment
         android:id="@+id/nav_settings"

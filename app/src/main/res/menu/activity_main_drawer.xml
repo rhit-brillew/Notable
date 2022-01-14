@@ -13,7 +13,7 @@
             android:icon="@drawable/ic_baseline_music_note_24"
             android:title="@string/menu_notes" />
         <item
-            android:id="@+id/nav_guitars"
+            android:id="@+id/nav_guitars_list"
             android:icon="@drawable/guitar_icon2"
             android:title="@string/menu_guitars" />
         <item
