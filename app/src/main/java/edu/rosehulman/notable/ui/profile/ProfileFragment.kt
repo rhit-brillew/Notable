@@ -12,33 +12,14 @@ import edu.rosehulman.notable.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var profileViewModel: ProfileViewModel
-    private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        profileViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
-
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

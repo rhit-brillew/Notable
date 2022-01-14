@@ -8,37 +8,28 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import edu.rosehulman.notable.adapters.NoteAdapter
 import edu.rosehulman.notable.databinding.FragmentNotesListBinding
 
 class NotesListFragment : Fragment() {
 
-    private lateinit var notesViewModel: NotesViewModel
-    private var _binding: FragmentNotesListBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentNotesListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        notesViewModel =
-            ViewModelProvider(this).get(NotesViewModel::class.java)
+    ): View {
+        binding = FragmentNotesListBinding.inflate(inflater, container, false)
+        val adapter = NoteAdapter(this)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.setHasFixedSize(true)
 
-        _binding = FragmentNotesListBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textGallery
-        notesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.fab.setOnClickListener {
+            adapter.addNote(null)
+        }
+        return binding.root
     }
 }
