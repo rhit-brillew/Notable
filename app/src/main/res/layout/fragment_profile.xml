@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/your_profile"/>
 
+
     <TextView
         android:id="@+id/name"
         android:textSize="28sp"
@@ -22,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/evan_brill"
-        app:drawableRightCompat="@drawable/ic_baseline_edit_24"
         android:drawablePadding="4dp"/>
+
 
     <ImageView
         android:id="@+id/center_image"
@@ -50,5 +51,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:text="@string/change_photo"/>
+        android:text="@string/edit"/>
 </RelativeLayout>

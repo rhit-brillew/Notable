@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 
 class NoteViewModel: ViewModel() {
     var notes = ArrayList<Note>()
+    var removalList = ArrayList<Note>()
     var currentPos = 0
     var tabTemp = ""
 
@@ -15,6 +16,17 @@ class NoteViewModel: ViewModel() {
     fun addNote(note: Note?) {
         val newNote = note ?: Note("Title", "Description", "Tab")
         notes.add(newNote)
+    }
+
+    fun removeNotes() {
+        removalList.clear()
+        for (note in notes) {
+            if (note.isSelected) {
+                note.isSelected = false
+                removalList.add(note)
+            }
+        }
+        notes.removeAll(removalList)
     }
 
     fun updateCurrentNote(title: String, description: String, tab: String) {

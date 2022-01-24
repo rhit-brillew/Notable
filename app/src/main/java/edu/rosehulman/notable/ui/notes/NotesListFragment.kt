@@ -32,6 +32,7 @@ class NotesListFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.setHasFixedSize(true)
+        setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.nav_note_add)
@@ -45,10 +46,9 @@ class NotesListFragment : Fragment() {
             MaterialAlertDialogBuilder(requireContext())
                 // Add customization options here
                 .setTitle("Are you sure?")
-                .setMessage("Are you sure you want to delete this quote?")
+                .setMessage("Are you sure you want to delete these notes?")
                 .setPositiveButton(android.R.string.ok) { dialog, which ->
-                    adapter.removeCurrentNote()
-                    findNavController().popBackStack()
+                    adapter.removeNotes()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()

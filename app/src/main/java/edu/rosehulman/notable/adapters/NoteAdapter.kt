@@ -33,6 +33,11 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
         notifyDataSetChanged()
     }
 
+    fun removeNotes() {
+        model.removeNotes()
+        notifyDataSetChanged()
+    }
+
     fun removeCurrentNote() {
         model.removeCurrentNote()
         notifyDataSetChanged()

@@ -34,7 +34,7 @@ class NoteEditFragment : Fragment() {
         binding.saveButton.setOnClickListener {
             val title = binding.editTitleEditText.text.toString()
             val description = binding.editDescriptionEditText.text.toString()
-            val tab = model.tabTemp
+            val tab = binding.editTabEditText.text.toString()
             model.updateCurrentNote(title, description, tab)
             findNavController().popBackStack()
         }

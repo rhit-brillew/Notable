@@ -20,6 +20,17 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        setupButtons()
+
         return binding.root
+    }
+
+    private fun setupButtons() {
+        binding.editName.setOnClickListener {
+            binding.name.visibility = View.GONE
+            binding.nameEditText.setText(binding.name.text)
+            binding.nameEditText.visibility = View.VISIBLE
+        }
     }
 }
