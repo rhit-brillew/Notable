@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/edit_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Title" />
+
+    <EditText
+        android:id="@+id/edit_title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/edit_description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Notes" />
+
+    <EditText
+        android:id="@+id/edit_description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="top"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/edit_tab_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Tab" />
+
+    <EditText
+        android:id="@+id/edit_tab_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:gravity="top"
+        android:fontFamily="monospace"
+        android:textSize="10sp"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine" />
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_gravity="right"
+        android:layout_margin="15dp"/>
+
+</LinearLayout>

@@ -12,10 +12,34 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
+        android:id="@+id/nav_note_edit"
+        android:name="edu.rosehulman.notable.ui.notes.NoteEditFragment"
+        android:label="Edit"
+        tools:layout="@layout/fragment_note_edit" />
+
+    <fragment
+        android:id="@+id/nav_note_add"
+        android:name="edu.rosehulman.notable.ui.notes.AddNoteFragment"
+        android:label="New Note"
+        tools:layout="@layout/fragment_add_note" />
+
+    <fragment
+        android:id="@+id/nav_note_detail"
+        android:name="edu.rosehulman.notable.ui.notes.NoteDetailFragment"
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_note_detail" />
+
+    <fragment
         android:id="@+id/nav_notes"
         android:name="edu.rosehulman.notable.ui.notes.NotesListFragment"
         android:label="@string/menu_notes"
         tools:layout="@layout/fragment_notes_list" />
+
+    <fragment
+        android:id="@+id/nav_add_tab"
+        android:name="edu.rosehulman.notable.ui.notes.AddTabFragment"
+        android:label="New Note"
+        tools:layout="@layout/fragment_add_tab" />
 
     <fragment
         android:id="@+id/nav_guitars_list"
