@@ -5,16 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import edu.rosehulman.notable.R
+import edu.rosehulman.notable.databinding.FragmentNotesListBinding
+import edu.rosehulman.notable.databinding.FragmentProfileEditBinding
 
 class ProfileEditFragment : Fragment() {
+
+    private lateinit var binding: FragmentProfileEditBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_edit, container, false)
+    ): View {
+        binding = FragmentProfileEditBinding.inflate(inflater, container, false)
+        setupButtons()
+        return binding.root
+    }
+
+    private fun setupButtons() {
+        binding.changeImageButton.setOnClickListener {
+            // do stuff to change the image
+        }
+        binding.editProfileSubmitButton.setOnClickListener {
+            // eventually this will make a call to the model
+            // for updating firebase
+            parentFragmentManager.popBackStack()
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package edu.rosehulman.notable.ui.guitars
+package edu.rosehulman.notable.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import edu.rosehulman.notable.R
+import edu.rosehulman.notable.models.Guitar
+import edu.rosehulman.notable.models.GuitarViewModel
+import edu.rosehulman.notable.ui.guitars.GuitarsListFragment
 
 class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<GuitarsAdapter.GuitarsViewHolder>() {
 
     val model = ViewModelProvider(fragment.requireActivity()).get(GuitarViewModel::class.java)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuitarsViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuitarsViewHolder {
         //todo: this will need to be uncommented when row_guitar is created
         val view = LayoutInflater.from(parent.context).inflate(R.layout.row_guitar, parent, false)
         return GuitarsViewHolder(view)

@@ -16,6 +16,7 @@
         android:background="@color/white"
         android:importantForAutofill="no"
         android:fontFamily="monospace"
+        android:textStyle="bold"
         android:textSize="12sp"
         android:lines="30"
         android:minLines="6"

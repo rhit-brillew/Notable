@@ -1,8 +1,7 @@
-package edu.rosehulman.notable.ui.guitars
+package edu.rosehulman.notable.models
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import edu.rosehulman.notable.models.Guitar
 
 class GuitarViewModel : ViewModel() {
 

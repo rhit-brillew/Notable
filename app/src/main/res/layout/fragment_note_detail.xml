@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -42,7 +43,8 @@
             android:id="@+id/tab_text"
             android:layout_margin="25dp"
             android:fontFamily="monospace"
-            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textSize="11sp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/detail_description_text"
             android:layout_width="match_parent"

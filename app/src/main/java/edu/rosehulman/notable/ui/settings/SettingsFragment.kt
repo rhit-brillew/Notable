@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import edu.rosehulman.notable.R
-import edu.rosehulman.notable.databinding.FragmentProfileBinding
 import edu.rosehulman.notable.databinding.FragmentSettingsBinding
-import edu.rosehulman.notable.ui.profile.ProfileViewModel
+import edu.rosehulman.notable.models.ProfileViewModel
 
 class SettingsFragment : Fragment() {
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.rosehulman.notable.adapters.GuitarsAdapter
 import edu.rosehulman.notable.databinding.FragmentGuitarsListBinding
 
 class GuitarsListFragment : Fragment() {
