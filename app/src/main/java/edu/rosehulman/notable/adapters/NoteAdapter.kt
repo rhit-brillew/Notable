@@ -66,9 +66,13 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
             noteDescriptionTextView.text = note.description
             itemView.setBackgroundColor(
                 if (note.isSelected) {
-                    Color.GRAY
+                    fragment.requireContext().getColor(R.color.secondaryLightColor)
                 } else {
-                    Color.WHITE
+                    if (adapterPosition % 2 == 0) {
+                        fragment.requireContext().getColor(R.color.primaryColor)
+                    } else {
+                        fragment.requireContext().getColor(R.color.secondaryColor)
+                    }
                 }
             )
         }

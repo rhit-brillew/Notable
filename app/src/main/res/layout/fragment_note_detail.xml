@@ -21,6 +21,8 @@
             android:id="@+id/detail_title_text"
             android:layout_width="wrap_content"
             android:layout_margin="25dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content" />
 

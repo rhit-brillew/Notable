@@ -49,6 +49,13 @@ class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<G
             //todo: figure out how to load guitar image from Firebase storage
             //this.guitarName.text = g.name
             //this.guitarDescription.text = g.description
+            itemView.setBackgroundColor(
+                if (adapterPosition % 2 == 0) {
+                    fragment.requireContext().getColor(R.color.primaryColor)
+                } else {
+                    fragment.requireContext().getColor(R.color.secondaryColor)
+                }
+            )
         }
     }
 

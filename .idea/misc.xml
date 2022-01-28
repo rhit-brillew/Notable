@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/app_bar_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_add_note.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_add_tab.xml" value="0.13020833333333334" />
@@ -12,7 +14,7 @@
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_note_edit.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_notes_list.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_profile_edit.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/fragment_profile_edit.xml" value="0.2" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/row_guitar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/layout/row_note.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/brillew/CSSE483/Notable/app/src/main/res/menu/activity_main_drawer.xml" value="0.13020833333333334" />

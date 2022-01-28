@@ -3,7 +3,7 @@ package edu.rosehulman.notable.models
 import androidx.lifecycle.ViewModel
 import edu.rosehulman.notable.models.Guitar
 
-class GuitarViewModel : ViewModel() {
+class  GuitarViewModel : ViewModel() {
 
     var guitars = ArrayList<Guitar>()
     var currentPos = 0

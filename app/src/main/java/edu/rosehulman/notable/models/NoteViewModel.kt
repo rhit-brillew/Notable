@@ -26,7 +26,9 @@ class NoteViewModel: ViewModel() {
                 removalList.add(note)
             }
         }
-        notes.removeAll(removalList)
+        for (note in removalList) {
+            notes.remove(note)
+        }
     }
 
     fun updateCurrentNote(title: String, description: String, tab: String) {
