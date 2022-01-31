@@ -1,6 +1,8 @@
 package edu.rosehulman.notable.ui.notes
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,6 +36,7 @@ class AddNoteFragment : Fragment() {
     private fun setupButtons() {
         binding.cameraButton.setOnClickListener {
             Log.d("NTBLE", "Camera button clicked")
+            dispatchTakeVideoIntent()
         }
         binding.tabButton.setOnClickListener {
             findNavController().navigate(R.id.nav_add_tab)
@@ -44,6 +47,15 @@ class AddNoteFragment : Fragment() {
             val tab = model.tabTemp
             model.addNote(Note(title, description, tab))
             findNavController().navigate(R.id.nav_notes)
+        }
+    }
+
+    val REQUEST_VIDEO_CAPTURE = 1
+    private fun dispatchTakeVideoIntent() {
+        Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
+            takeVideoIntent.resolveActivity(requireContext().packageManager)?.also {
+                startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE)
+            }
         }
     }
 
