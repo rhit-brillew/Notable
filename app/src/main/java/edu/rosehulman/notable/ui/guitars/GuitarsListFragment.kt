@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.rosehulman.notable.R
 import edu.rosehulman.notable.adapters.GuitarsAdapter
 import edu.rosehulman.notable.databinding.FragmentGuitarsListBinding
 
@@ -27,6 +29,8 @@ class GuitarsListFragment : Fragment() {
 
         binding.fab.setOnClickListener{
             adapter.addGuitar(null)
+            //adapter.setCurrentToLastGuitar()
+            //findNavController().navigate(R.id.nav_guitars_edit)
         }
 
         return binding.root
