@@ -75,4 +75,13 @@ class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<G
         }
     }
 
+    //firebase
+    fun addListener(fragmentName: String){
+        model.addListener(fragmentName){ notifyDataSetChanged()}
+    }
+
+    fun removeListener(fragmentName: String){
+        model.removeListener(fragmentName)
+    }
+
 }

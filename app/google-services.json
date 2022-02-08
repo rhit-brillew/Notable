@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409039381160",
+    "project_id": "notable-d9e5f",
+    "storage_bucket": "notable-d9e5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409039381160:android:e837b561f96168fe17189d",
+        "android_client_info": {
+          "package_name": "edu.rosehulman.notable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409039381160-fh2o6msr6b8q3ld8cfo8tehvocjrcor1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0Cow3lc8Gta3xQDagNinM0GjlkEeD8-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409039381160-fh2o6msr6b8q3ld8cfo8tehvocjrcor1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

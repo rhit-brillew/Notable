@@ -14,6 +14,7 @@ import edu.rosehulman.notable.databinding.FragmentGuitarsListBinding
 class GuitarsListFragment : Fragment() {
 
     private lateinit var binding: FragmentGuitarsListBinding
+    lateinit var adapter: GuitarsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,8 +22,9 @@ class GuitarsListFragment : Fragment() {
     ): View? {
         binding = FragmentGuitarsListBinding.inflate(inflater, container, false)
 
-        val adapter = GuitarsAdapter(this)
+        adapter = GuitarsAdapter(this)
         binding.recyclerView.adapter=adapter
+        adapter.addListener(fragmentName)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.setHasFixedSize(true)
@@ -34,6 +36,10 @@ class GuitarsListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    companion object{
+        const val fragmentName = "GuitarsListFragment"
     }
 
 }
