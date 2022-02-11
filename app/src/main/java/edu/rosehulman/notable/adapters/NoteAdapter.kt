@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.rosehulman.notable.R
 import edu.rosehulman.notable.models.Note
 import edu.rosehulman.notable.models.NoteViewModel
+import edu.rosehulman.notable.ui.notes.AddNoteFragment
 import edu.rosehulman.notable.ui.notes.NotesListFragment
 
 class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
@@ -27,6 +28,16 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
     }
 
     override fun getItemCount() = model.size()
+
+    fun addListener(fragmentName: String) {
+        model.addListener(fragmentName) {
+            notifyDataSetChanged()
+        }
+    }
+
+    fun removeListener(fragmentName: String) {
+        model.removeListener(fragmentName)
+    }
 
     fun addNote(note: Note?) {
         model.addNote(note)

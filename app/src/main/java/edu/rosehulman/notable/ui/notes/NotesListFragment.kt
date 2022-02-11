@@ -1,6 +1,7 @@
 package edu.rosehulman.notable.ui.notes
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -29,6 +30,8 @@ class NotesListFragment : Fragment() {
     ): View {
         binding = FragmentNotesListBinding.inflate(inflater, container, false)
         adapter = NoteAdapter(this)
+        adapter.addListener(fragmentName)
+        setAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.setHasFixedSize(true)
@@ -38,6 +41,19 @@ class NotesListFragment : Fragment() {
             findNavController().navigate(R.id.nav_note_add)
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        adapter.removeListener(fragmentName)
+    }
+
+    companion object {
+        const val fragmentName = "NotesListFragment"
+    }
+
+    private fun setAdapter() {
+        adapter.model.setAdapter(adapter)
     }
 
 

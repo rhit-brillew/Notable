@@ -25,10 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     lateinit var navController: NavController
-    lateinit var authStateListener: FirebaseAuth.AuthStateListener
-    val signinLauncher = registerForActivityResult(
-        FirebaseAuthUIActivityResultContract()
-    ) { /* empty since the auth listener already responds .*/ }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initializeAuthListener()
+        //initializeAuthListener()
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
@@ -65,39 +61,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun initializeAuthListener(){
-        authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
-            val user = auth.currentUser
-            if(user==null){
-                setupAuthUI()
-            }else{
-                //todo: logged in here. do we want users to do anything on account creation?
-            }
-        }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        Firebase.auth.addAuthStateListener(authStateListener)
-    }
 
-    override fun onStop() {
-        super.onStop()
-        Firebase.auth.removeAuthStateListener(authStateListener)
-    }
-
-    fun setupAuthUI() {
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-        val signinIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(false)
-            .setLogo(R.drawable.ic_baseline_person_24)
-            .build()
-        signinLauncher.launch(signinIntent)
-    }
 }
