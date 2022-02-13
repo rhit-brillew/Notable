@@ -30,6 +30,7 @@ class AddNoteFragment : Fragment() {
         .reference
         .child("videos")
     private var storageUriStringInFragment: String = ""
+    private val REQUEST_VIDEO_CAPTURE = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,11 +68,12 @@ class AddNoteFragment : Fragment() {
         }
     }
 
-    val REQUEST_VIDEO_CAPTURE = 1
     private fun dispatchTakeVideoIntent() {
         Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
+            Log.d("NTBLE", "Here")
             takeVideoIntent.resolveActivity(requireContext().packageManager)?.also {
-                startActivityForResult(takeVideoIntent, 1)
+                startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE)
+                Log.d("NTBLE", "Launches camera")
             }
         }
     }
