@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import coil.load
 import edu.rosehulman.notable.R
 import edu.rosehulman.notable.databinding.FragmentGuitarsDetailBinding
 import edu.rosehulman.notable.models.GuitarViewModel
@@ -44,11 +45,11 @@ class GuitarsDetailFragment : Fragment() {
 
 
         //todo: load image from Firebase storage. if there is no url, the use the icon
-        if(model.getCurrentGuitar().location.isEmpty()){
+        if(model.getCurrentGuitar().storageURIString.isEmpty()){
             binding.guitarDetailImage.setImageDrawable(getResources().getDrawable(R.drawable.guitar_icon2))
         }else{
             //todo: load image from firestore. this is temporary
-            binding.guitarDetailImage.setImageURI(Uri.parse(model.getCurrentGuitar().location))
+            binding.guitarDetailImage.load(model.getCurrentGuitar().storageURIString)
 
         }
     }

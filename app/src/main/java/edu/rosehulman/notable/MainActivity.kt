@@ -1,6 +1,7 @@
 package edu.rosehulman.notable
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -11,13 +12,17 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.rosehulman.notable.databinding.ActivityMainBinding
+import edu.rosehulman.notable.models.Profile
+import edu.rosehulman.notable.models.ProfileViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,6 +77,21 @@ class MainActivity : AppCompatActivity() {
                 setupAuthUI()
             }else{
                 //todo: logged in here. do we want users to do anything on account creation?
+                with(user){
+                    Log.d(Constants.TAG, "Profile: $uid, $email, $displayName")
+                }
+                val profileModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+                profileModel.getOrMakeProfile {
+                    if(profileModel.hasCompletedSetup()){
+                        val id = findNavController(R.id.nav_host_fragment_content_main).currentDestination!!.id
+                        if(id.toString() == R.id.nav_profile_loading.toString()){
+                            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_notes)
+                        }
+                    }
+                    else{
+                        findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_profile_edit)
+                    }
+                }
             }
         }
     }

@@ -7,7 +7,6 @@ import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.rosehulman.notable.Constants
-import edu.rosehulman.notable.models.Guitar
 
 class  GuitarViewModel : ViewModel() {
 
@@ -21,7 +20,7 @@ class  GuitarViewModel : ViewModel() {
         ref.add(newGuitar)
     }
     fun updateCurrentGuitar(photoLocation:String,name:String,description:String){
-        guitars[currentPos].location=photoLocation
+        guitars[currentPos].storageURIString=photoLocation
         guitars[currentPos].name=name
         guitars[currentPos].description=description
         ref.document(getCurrentGuitar().id).set(getCurrentGuitar())

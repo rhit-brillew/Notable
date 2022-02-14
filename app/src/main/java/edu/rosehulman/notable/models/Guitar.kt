@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.ServerTimestamp
 
-class Guitar(var location:String="", var name:String="", var description:String="") {
+class Guitar(var storageURIString:String="", var name:String="", var description:String="") {
 
     @get:Exclude
     var id = ""

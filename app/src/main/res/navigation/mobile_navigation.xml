@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_notes">
+    app:startDestination="@+id/nav_profile_loading">
 
     <fragment
         android:id="@+id/nav_profile"
@@ -70,4 +70,10 @@
         android:name="edu.rosehulman.notable.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_profile_loading"
+        android:name="edu.rosehulman.notable.ui.profile.ProfileLoadingFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile_loading"/>
 </navigation>

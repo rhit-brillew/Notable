@@ -55,10 +55,10 @@ class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<G
 
         fun bind(g: Guitar){
             //todo: figure out how to load guitar image from Firebase storage
-            if(!g.location.isEmpty()){
+            if(!g.storageURIString.isEmpty()){
                 //todo: load image from Firebase storage here. this is temporary
                 //this.guitarImage.setImageURI(Uri.parse(model.getCurrentGuitar().location))
-                this.guitarImage.load(Uri.parse(g.location))
+                this.guitarImage.load(Uri.parse(g.storageURIString))
             }else{
                 this.guitarImage.load(R.drawable.guitar_icon2)
                 //this.guitarImage.setImageDrawable(fragment.getResources().getDrawable(R.drawable.guitar_icon2))
