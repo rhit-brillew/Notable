@@ -29,10 +29,10 @@
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/video_view"
             android:layout_below="@+id/detail_title_text"
-            android:layout_width="250dp"
+            android:layout_width="350dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="25dp"
-            android:layout_height="250dp"
+            android:layout_height="350dp"
             app:resize_mode="fill" />
         <TextView
             android:id="@+id/detail_description_text"
