@@ -1,5 +1,7 @@
 package edu.rosehulman.notable.ui.notes
 
+import android.widget.MediaController
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,11 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import edu.rosehulman.notable.R
 import edu.rosehulman.notable.databinding.FragmentAddTabBinding
 import edu.rosehulman.notable.databinding.FragmentNoteDetailBinding
 import edu.rosehulman.notable.models.NoteViewModel
+import java.io.File
+import kotlin.concurrent.fixedRateTimer
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+
 
 class NoteDetailFragment : Fragment() {
     private lateinit var binding: FragmentNoteDetailBinding
@@ -30,8 +36,19 @@ class NoteDetailFragment : Fragment() {
         updateView()
         setHasOptionsMenu(true)
 
+        val videoUri = model.getCurrentNote().videoUrl
+        if (videoUri != "") {
+            val player = ExoPlayer.Builder(context!!).build()
+            binding.videoView.player = player
+            val mediaItem: MediaItem = MediaItem.fromUri(videoUri)
+            player.setMediaItem(mediaItem)
+            player.prepare()
+            player.play()
+        }
+
         return binding.root
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.edit_note -> {

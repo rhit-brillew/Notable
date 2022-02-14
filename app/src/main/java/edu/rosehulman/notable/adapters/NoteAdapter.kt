@@ -1,17 +1,25 @@
 package edu.rosehulman.notable.adapters
 
 import android.graphics.Color
+import android.media.ThumbnailUtils
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import edu.rosehulman.notable.R
 import edu.rosehulman.notable.models.Note
 import edu.rosehulman.notable.models.NoteViewModel
+import edu.rosehulman.notable.ui.notes.AddNoteFragment
 import edu.rosehulman.notable.ui.notes.NotesListFragment
+import java.security.AccessController.getContext
 
 class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
@@ -27,6 +35,16 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
     }
 
     override fun getItemCount() = model.size()
+
+    fun addListener(fragmentName: String) {
+        model.addListener(fragmentName) {
+            notifyDataSetChanged()
+        }
+    }
+
+    fun removeListener(fragmentName: String) {
+        model.removeListener(fragmentName)
+    }
 
     fun addNote(note: Note?) {
         model.addNote(note)
@@ -46,6 +64,7 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
     inner class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val noteTitleTextView = itemView.findViewById<TextView>(R.id.row_note_title)
         val noteDescriptionTextView = itemView.findViewById<TextView>(R.id.row_note_description)
+        val noteThumbnail = itemView.findViewById<ImageView>(R.id.row_note_image_view)
 
         init {
             itemView.setOnClickListener {
@@ -64,6 +83,9 @@ class NoteAdapter(val fragment: NotesListFragment): RecyclerView.Adapter<NoteAda
         fun bind(note: Note) {
             noteTitleTextView.text = note.title
             noteDescriptionTextView.text = note.description
+            Glide.with(fragment)
+                .load(note.videoUrl)
+                .into(noteThumbnail)
             itemView.setBackgroundColor(
                 if (note.isSelected) {
                     fragment.requireContext().getColor(R.color.secondaryLightColor)

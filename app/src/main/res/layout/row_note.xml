@@ -9,13 +9,15 @@
 
     <ImageView
         android:id="@+id/row_note_image_view"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_baseline_music_note_24"
         android:contentDescription="Video thumbnail"
-        android:scaleType="centerInside"
-        android:layout_marginEnd="20dp"
-        />
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
