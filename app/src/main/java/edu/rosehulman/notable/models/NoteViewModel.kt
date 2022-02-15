@@ -26,7 +26,8 @@ class NoteViewModel: ViewModel() {
     fun getCurrentNote() = notes[currentPos]
 
     fun addListener(fragmentName: String, observer: () -> Unit) {
-        ref = Firebase.firestore.collection(Note.COLLECTION_PATH)
+        val uid = Firebase.auth.currentUser!!.uid
+        ref = Firebase.firestore.collection(Profile.COLLECTION_PATH).document(uid).collection(Note.COLLECTION_PATH)
         val subscription =  ref
             .addSnapshotListener { snapshot: QuerySnapshot?, error: FirebaseFirestoreException? ->
                 error?.let {
