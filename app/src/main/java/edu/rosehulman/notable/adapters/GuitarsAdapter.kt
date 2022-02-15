@@ -49,7 +49,7 @@ class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<G
             itemView.setOnClickListener{
                 model.updatePos(adapterPosition)
                 //todo: this will have to change
-                fragment.findNavController().navigate(R.id.nav_guitars_edit)
+                fragment.findNavController().navigate(R.id.nav_guitars_detail)
             }
         }
 
@@ -82,6 +82,11 @@ class GuitarsAdapter(val fragment: GuitarsListFragment) : RecyclerView.Adapter<G
 
     fun removeListener(fragmentName: String){
         model.removeListener(fragmentName)
+    }
+
+    fun removeGuitar() {
+        model.removeCurrentGuitar()
+        model.currentPos=0
     }
 
 }

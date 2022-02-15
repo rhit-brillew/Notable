@@ -21,5 +21,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         app:srcCompat="@android:drawable/ic_input_add"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription"
+        android:backgroundTint="@color/primaryColor"/>
 </RelativeLayout>

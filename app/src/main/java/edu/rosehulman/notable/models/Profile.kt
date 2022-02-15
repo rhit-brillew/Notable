@@ -2,6 +2,7 @@ package edu.rosehulman.notable.models
 
 data class Profile(
     var name:String = "",
+    var phoneNumber:String="",
     var storageURIString:String = "",
     var hasCompletedSetup:Boolean=false) {
 

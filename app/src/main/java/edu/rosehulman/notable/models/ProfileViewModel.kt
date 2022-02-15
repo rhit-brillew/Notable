@@ -33,8 +33,13 @@ class ProfileViewModel : ViewModel() {
                 if(snapshot.exists()){
                     profile = snapshot.toObject(Profile::class.java)
                 }else{
-                    profile= Profile(name=Firebase.auth.currentUser!!.displayName!!)//, snapshot.getString("storageURIString")!!, snapshot.getBoolean("hasCompletedSetup")!!)
-                    ref.set(profile!!)
+                    if(Firebase.auth.currentUser!!.phoneNumber == null){
+                        profile= Profile(name=Firebase.auth.currentUser!!.displayName!!)//, snapshot.getString("storageURIString")!!, snapshot.getBoolean("hasCompletedSetup")!!)
+                        ref.set(profile!!)
+                    }else{
+                        profile= Profile(phoneNumber=Firebase.auth.currentUser!!.phoneNumber!!)
+                        ref.set(profile!!)
+                    }
                 }
                 observer()
             }

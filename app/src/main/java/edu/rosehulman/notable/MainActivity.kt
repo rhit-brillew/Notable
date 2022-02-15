@@ -3,6 +3,8 @@ package edu.rosehulman.notable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.widget.ImageView
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -14,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import coil.load
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
+
+    lateinit var navView: NavigationView
     val signinLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
     ) { /* empty since the auth listener already responds .*/ }
@@ -46,7 +51,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+        navView = binding.navView
+
         navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -83,6 +89,12 @@ class MainActivity : AppCompatActivity() {
                 val profileModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
                 profileModel.getOrMakeProfile {
                     if(profileModel.hasCompletedSetup()){
+
+                        var name: TextView = navView.getHeaderView(0).findViewById(R.id.nav_drawer_name)
+                        var photo: ImageView = navView.getHeaderView(0).findViewById(R.id.nav_drawer_photo)
+                        name.setText(profileModel.profile!!.name)
+                        photo.load(profileModel.profile!!.storageURIString)
+
                         val id = findNavController(R.id.nav_host_fragment_content_main).currentDestination!!.id
                         if(id.toString() == R.id.nav_profile_loading.toString()){
                             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_notes)
@@ -109,14 +121,14 @@ class MainActivity : AppCompatActivity() {
     fun setupAuthUI() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
+            AuthUI.IdpConfig.PhoneBuilder().build()
         )
         val signinIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
             .setIsSmartLockEnabled(false)
-            .setLogo(R.drawable.ic_baseline_person_24)
+            .setLogo(R.drawable.logo)
+            .setTheme(R.style.Theme_Notable)
             .build()
         signinLauncher.launch(signinIntent)
     }

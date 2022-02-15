@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ class GuitarsDetailFragment : Fragment() {
         binding = FragmentGuitarsDetailBinding.inflate(inflater, container, false)
         model = ViewModelProvider(requireActivity()).get(GuitarViewModel::class.java)
 
+        setHasOptionsMenu(true)
         setupButtons()
         updateView()
 
@@ -52,6 +54,21 @@ class GuitarsDetailFragment : Fragment() {
             binding.guitarDetailImage.load(model.getCurrentGuitar().storageURIString)
 
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.delete_note -> {
+            model.removeCurrentGuitar()
+            findNavController().navigate(R.id.nav_guitars_list)
+            true
+        }
+
+        R.id.edit_note -> {
+            findNavController().navigate(R.id.nav_guitars_edit)
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
     }
 
 }
