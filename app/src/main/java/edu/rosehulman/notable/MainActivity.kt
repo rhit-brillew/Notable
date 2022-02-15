@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
             .setIsSmartLockEnabled(false)
-            .setLogo(R.drawable.ic_baseline_person_24)
+            .setLogo(R.mipmap.ic_launcher_note)
             .build()
         signinLauncher.launch(signinIntent)
     }
